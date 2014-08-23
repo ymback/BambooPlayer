@@ -100,7 +100,6 @@ public class VideoActivity extends Activity implements MediaController.MediaPlay
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this))
 			return;
-
 		vPlayerServiceConnection = new ServiceConnection() {
 			@Override
 			public void onServiceConnected(ComponentName name, IBinder service) {

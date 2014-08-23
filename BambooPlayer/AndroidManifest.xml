@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="gov.anzong.mediaplayer"
     android:installLocation="auto"
-    android:versionCode="102"
-    android:versionName="1.0.2"
+    android:versionCode="103"
+    android:versionName="1.0.3"
     android:sharedUserId="gov.anzong.androidnga" >
 
     <uses-sdk
@@ -27,7 +27,8 @@
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="gov.anzong.mediaplayer.ReceiveIntentActivity"
+            android:label="@string/vitamio_name_label" 
+            android:name="gov.anzong.receiveintent.ReceiveIntentActivity"
             android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"
@@ -38,7 +39,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="gov.anzong.mediaplayer.ReceiveIntentFilterActivity"
+            android:label="@string/vitamio_name_label" 
+            android:name="gov.anzong.receiveintent.ReceiveIntentFilterActivity"
             android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"
@@ -163,6 +165,132 @@
                 <data android:pathPattern=".*\\.ogv" />
                 <data android:pathPattern=".*\\.ogm" />
                 <data android:pathPattern=".*\\.3gp" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:label="@string/vitamio_name_label" 
+            android:name="gov.anzong.receiveintent.ReceiveIntentURLActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+        	android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="bilibili" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                
+                <data android:host="v.youku.com" android:pathPrefix="/v_show/id_" android:pathPattern=".*\\.html.*" />
+                <data android:host="player.youku.com" android:pathPrefix="/player.php/" android:pathPattern=".*\\.swf.*" />
+                <data android:host="static.youku.com" android:pathPrefix="/v" android:pathPattern=".*\\.swf.*" />
+                <data android:host="player.youku.com" android:pathPrefix="/embed/"/>
+                
+                <data android:host="www.tudou.com" android:pathPrefix="/programs/view/" />
+                <data android:host="tudou.com" android:pathPrefix="/programs/view/" />
+                <data android:host="www.tudou.com" android:pathPrefix="/v/" />
+                <data android:host="tudou.com" android:pathPrefix="/v/" />
+                <data android:host="www.tudou.com" android:pathPrefix="albumplay" android:pathPattern=".*\\.html.*" />
+                
+                <data android:host="www.56.com" android:pathPrefix="/u"  android:pathPattern=".*\\.html.*" />
+                <data android:host="56.com" android:pathPrefix="/u"  android:pathPattern=".*\\.html.*" />
+                <data android:host="www.56.com" android:pathPrefix="/flashApp/out"  android:pathPattern=".*\\.swf.*vid=" />
+                <data android:host="56.com" android:pathPrefix="/flashApp/out"  android:pathPattern=".*\\.swf.*vid=" />
+                <data android:host="player.56.com" android:pathPrefix="/v_" android:pathPattern=".*\\.swf.*"/>
+                
+                <data android:host="v.ku6.com" android:pathPrefix="/show/" android:pathPattern=".*html.*" />
+                <data android:host="player.ku6.com" android:pathPrefix="/refer/" android:pathPattern=".*\\.swf.*" />
+                <data android:host="player.ku6cdn.com" android:pathPrefix="/default/loader/" android:pathPattern=".*\\.swf.*" />
+                
+                <data android:host="www.letv.com" android:pathPrefix="/ptv/" android:pathPattern=".*\\.html.*" />
+                <data android:host="letv.com" android:pathPrefix="/ptv/" android:pathPattern=".*\\.html.*" />
+                <data android:host=".*\\..*\\.letv.com" android:pathPrefix="/player/" android:pathPattern=".*\\.swf.*" />
+                
+                <data android:host="v.qq.com" android:pathPattern=".*\\.html?vid=.*" />
+                <data android:host="static.video.qq.com" android:pathPrefix="/TPout.swf"/>
+                
+                <data android:host="www.wasu.cn" android:pathPrefix="/play/show/id/"/>
+                <data android:host="wasu.cn" android:pathPrefix="/play/show/id/"/>
+                
+                <data android:host="www.youtube.com" android:pathPrefix="/watch" android:pathPattern=".*\\?.*"/>
+                <data android:host="youtube.com" android:pathPrefix="/watch" android:pathPattern=".*\\?.*"/>
+                <data android:host="youtu.be" android:pathPrefix="/" android:pathPattern=".*\\?.*" />
+                <data android:host="www.youtube.com" android:pathPrefix="/embed/" android:pathPattern=".*\\?.*"/>
+                <data android:host="youtube.com" android:pathPrefix="/embed/" android:pathPattern=".*\\?.*"/>
+                <data android:host="www.youtube-nocookie.com" android:pathPrefix="/embed/" android:pathPattern=".*\\?.*"/>
+                <data android:host="youtube-nocookie.com" android:pathPrefix="/embed/" android:pathPattern=".*\\?.*"/>
+                <data android:host="youtube-nocookie" android:pathPrefix="/v/" android:pathPattern=".*\\?.*"/>
+                <data android:host="www.youtube-nocookie" android:pathPrefix="/v/" android:pathPattern=".*\\?.*"/>
+                <data android:host="www.youtube.com" android:pathPrefix="/v/" android:pathPattern=".*\\?.*"/>
+                <data android:host="youtube.com" android:pathPrefix="/v/" android:pathPattern=".*\\?.*"/>
+                
+                <data android:host="tv.cntv.cn" android:pathPrefix="/video/"/>
+                
+                <data android:host="v.163.com" android:pathPrefix="/" android:pathPattern=".*\\.html.*" />
+                <data android:host="v.game.163.com" android:pathPrefix="/video/" android:pathPattern=".*\\.html.*" />
+                <data android:host="open.163.com" android:pathPrefix="/movie/" android:pathPattern=".*\\.html.*" />
+                
+                <data android:host="www.bilibili.tv" android:pathPrefix="/video/av"/>
+                <data android:host="bilibili.tv" android:pathPrefix="/video/av"/>
+                <data android:host="www.bilibili.com" android:pathPrefix="/video/av"/>
+                <data android:host="bilibili.com" android:pathPrefix="/video/av"/>
+                <data android:host="bilibili.kankanews.com" android:pathPrefix="/video/av"/>
+                <data android:host="secure.bilibili.tv" android:pathPrefix="/secure,"/>
+                <data android:host="share.acg.tv" android:pathPrefix="/av"/>
+                <data android:host="share.acg.tv" android:pathPrefix="/flash.swf"/>
+                <data android:host="static.hdslb.com" android:pathPrefix="/miniloader.swf"/>
+                <data android:host="m.acg.tv" android:pathPrefix="/video/av" android:pathPattern=".*\\.html.*"/>
+                
+                <data android:host="v.yinyuetai.com" android:pathPrefix="/v"/>
+                
+                <data android:host="v.pps.tv" android:pathPrefix="/play_"/>
+                <data android:host="player.pps.tv" android:pathPrefix="/player/sid/"/>
+                
+                <data android:host="video.sina.com.cn" android:pathPattern=".*\\.html.*" />
+                <data android:host="open.sina.com.cn" android:pathPrefix="/course/" android:pathPattern=".*\\.html.*" />
+                <data android:host="tv.video.sina.com.cn" android:pathPrefix="/play/" android:pathPattern=".*\\.html.*" />
+                
+                <data android:host="www.iqiyi.com" android:pathPrefix="/" android:pathPattern=".*\\.html.*" />
+                <data android:host="iqiyi.com" android:pathPrefix="/" android:pathPattern=".*\\.html.*" />
+                <data android:host="www.iqiyi.com" android:pathPrefix="/common/flashplayer/" android:pathPattern=".*\\.swf.*" />
+                <data android:host="iqiyi.com" android:pathPrefix="/common/flashplayer/" android:pathPattern=".*\\.swf.*" />
+                <data android:host="player.video.qiyi.com" android:pathPattern=".*\\.swf.*" />
+                <data android:host="www.iqiyi.com" android:pathPrefix="/common/qplay.html?" android:pathPattern=".*tvid.*vid.*" />
+                <data android:host="iqiyi.com" android:pathPrefix="/common/qplay.html?" android:pathPattern=".*tvid.*vid.*" />
+                <data android:host="www.iqiyi.com" android:pathPrefix="/common/qplay.html?" android:pathPattern=".*vid.*tvid.*" />
+                <data android:host="iqiyi.com" android:pathPrefix="/common/qplay.html?" android:pathPattern=".*vid.*tvid.*" />
+                
+                <data android:host="www.acfun.com" android:pathPrefix="/v/ac"/>
+                <data android:host="acfun.com" android:pathPrefix="/v/ac"/>
+                <data android:host="www.acfun.tv" android:pathPrefix="/v/ac"/>
+                <data android:host="acfun.tv" android:pathPrefix="/v/ac"/>
+                <data android:host="static.acfun.com" android:pathPrefix="/player/" android:pathPattern=".*\\.swf.*"/>
+                <data android:host="static.acfun.tv" android:pathPrefix="/player/" android:pathPattern=".*\\.swf.*"/>
+                
+                <data android:host="v.ali213.net" android:pathPrefix="/video/"  android:pathPattern=".*\\.html.*" />
+                
+                <data android:host="tv.sohu.com" android:pathPattern=".*\\.shtml.*" />
+                <data android:host="tv.sohu.com" android:pathPrefix="/upload/static/share/" android:pathPattern=".*\\.html.*" />
+                <data android:host="my.tv.sohu.com" android:pathPrefix="/u/" />
+                <data android:host="my.tv.sohu.com" android:pathPrefix="/us/" />
+                <data android:host="share.vrs.sohu.com" android:pathPrefix="/" android:pathPattern=".*v\\.swf.*"/>
+                
+                <data android:host="www.1905.com" android:pathPrefix="/vod/play/" android:pathPattern=".*\\.shtml.*"/>
+                <data android:host="1905.com" android:pathPrefix="/vod/play/" android:pathPattern=".*\\.shtml.*"/>
+                
+                <data android:host="v.ifeng.com" android:pathPrefix="/" android:pathPattern=".*\\.shtml.*"/>
+                 
+                <data android:host="www.ted.com" android:pathPrefix="/talks/" android:pathPattern=".*\\.html" />
+                <data android:host="ted.com" android:pathPrefix="/talks/" android:pathPattern=".*\\.html" />
             </intent-filter>
         </activity>
         <activity

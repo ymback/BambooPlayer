@@ -13,6 +13,7 @@ import io.vov.vitamio.MediaPlayer.OnTimedTextListener;
 import io.vov.vitamio.MediaPlayer.OnVideoSizeChangedListener;
 import gov.anzong.mediaplayer.VP;
 import gov.anzong.mediaplayer.VitamioInstaller;
+import gov.anzong.util.StringUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -168,10 +169,21 @@ public class PlayerService extends Service implements
 		mInitialized = false;
 		mPrepared = false;
 		mVideoSizeKnown = false;
-
+		HashMap<String, String> headers = new HashMap<String, String>();
 		try {
 			mPlayer.setScreenOnWhilePlaying(true);
-			mPlayer.setDataSource(PlayerService.this, mUri);
+			if (mUri != null) {
+				if (mUri.toString().indexOf(".56.com/") < 0) {
+					headers.put(
+							"user-agent",
+							"Mozilla/5.0 (iPad; CPU OS 5_0_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A405 Safari/7534.48.3");
+				} else {
+					headers.put("user-agent",
+							"Mozilla/5.0 (Windows NT 6.3; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0");
+					headers.put("seekable", "1");
+				}
+			}
+			mPlayer.setDataSource(PlayerService.this, mUri, headers);
 			if (mLastAudioTrack != -1)
 				mPlayer.selectTrack(mLastAudioTrack);
 			if (mLastSubTrackId != -1)

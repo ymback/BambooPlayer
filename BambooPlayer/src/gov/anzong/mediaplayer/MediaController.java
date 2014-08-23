@@ -4,6 +4,7 @@ package gov.anzong.mediaplayer;
 
 import gov.anzong.mediaplayer.CommonGestures.TouchListener;
 import gov.anzong.mediaplayer.R;
+import gov.anzong.util.FunctionUtil;
 
 import io.vov.vitamio.MediaPlayer;
 
@@ -143,13 +144,6 @@ public class MediaController extends FrameLayout {
 		}
 	}
 
-	public static boolean isInWifi() {
-		ConnectivityManager conMan = (ConnectivityManager) mContext
-				.getSystemService(Context.CONNECTIVITY_SERVICE);
-		State wifi = conMan.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
-				.getState();
-		return wifi == State.CONNECTED;
-	}
 
 	@SuppressLint("NewApi")
 	private void initResources() {
@@ -404,47 +398,6 @@ public class MediaController extends FrameLayout {
 		mDownloadRate.setText(rate);
 	}
 
-	public static String getNetworkClass() {
-		if (isInWifi()) {
-			return "WIFI";
-		}
-		if (!isConnected()) {
-			return "ÎÞÍøÂç";
-		}
-		TelephonyManager mTelephonyManager = (TelephonyManager) mContext
-				.getSystemService(Context.TELEPHONY_SERVICE);
-		int networkType = mTelephonyManager.getNetworkType();
-		switch (networkType) {
-		case TelephonyManager.NETWORK_TYPE_GPRS:
-		case TelephonyManager.NETWORK_TYPE_EDGE:
-		case TelephonyManager.NETWORK_TYPE_CDMA:
-		case TelephonyManager.NETWORK_TYPE_1xRTT:
-		case TelephonyManager.NETWORK_TYPE_IDEN:
-			return "2G";
-		case TelephonyManager.NETWORK_TYPE_UMTS:
-		case TelephonyManager.NETWORK_TYPE_EVDO_0:
-		case TelephonyManager.NETWORK_TYPE_EVDO_A:
-		case TelephonyManager.NETWORK_TYPE_HSDPA:
-		case TelephonyManager.NETWORK_TYPE_HSUPA:
-		case TelephonyManager.NETWORK_TYPE_HSPA:
-		case TelephonyManager.NETWORK_TYPE_EVDO_B:
-		case TelephonyManager.NETWORK_TYPE_EHRPD:
-		case TelephonyManager.NETWORK_TYPE_HSPAP:
-			return "3G";
-		case TelephonyManager.NETWORK_TYPE_LTE:
-			return "4G";
-		default:
-			return "Î´ÖªÍøÂç";
-
-		}
-	}
-
-	public static boolean isConnected() {
-		ConnectivityManager conMan = (ConnectivityManager) mContext
-				.getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo info = conMan.getActiveNetworkInfo();
-		return (info != null && info.isConnected());
-	}
 
 	public void setBatteryLevel(String level) {
 		mBatteryLevel.setVisibility(View.VISIBLE);
@@ -611,7 +564,7 @@ public class MediaController extends FrameLayout {
 				break;
 			case MSG_TIME_TICK:
 				c.mDateTime.setText(currentTimeString());
-				c.mWifiRate.setText(getNetworkClass());
+				c.mWifiRate.setText(FunctionUtil.getNetworkClass(mContext));
 				sendEmptyMessageDelayed(MSG_TIME_TICK, TIME_TICK_INTERVAL);
 				break;
 			case MSG_HIDE_OPERATION_INFO:

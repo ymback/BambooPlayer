@@ -1,5 +1,7 @@
-package gov.anzong.mediaplayer;
+package gov.anzong.receiveintent;
 
+import gov.anzong.mediaplayer.VideoActivity;
+import gov.anzong.util.StringUtil;
 import io.vov.vitamio.LibsChecker;
 import android.app.Activity;
 import android.content.Intent;
@@ -19,7 +21,7 @@ public class ReceiveIntentFilterActivity extends Activity {
 			return;
 		uri = getIntent().getData();
 		if (uri != null) {
-			if (!isEmpty(uri.toString())) {
+			if (!StringUtil.isEmpty(uri.toString())) {
 				VideoActivity.openVideo(this, uri, getname(uri));
 				this.finish();
 			} else {
@@ -56,14 +58,5 @@ public class ReceiveIntentFilterActivity extends Activity {
 			title = "未知";
 		}
 		return title;
-	}
-
-	/** 判断是否是 "" 或者 null */
-	public static boolean isEmpty(String str) {
-		if (str != null && !"".equals(str)) {
-			return false;
-		} else {
-			return true;
-		}
 	}
 }
