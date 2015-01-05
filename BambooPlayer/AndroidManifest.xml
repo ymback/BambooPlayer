@@ -298,11 +298,13 @@
             android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"
+            android:process="bambooPlayer"
         	android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
 
         <service
+        	android:process="bambooPlayer"
             android:name="gov.anzong.mediaplayer.PlayerService"/>
     </application>
 
