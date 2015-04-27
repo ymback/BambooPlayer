@@ -84,12 +84,13 @@ try{
 若你想提交新的以上支持站点的解析地址或者新的站点,请在Issue中提出,若能在Issue中顺带提出解析方式的,将优先予以加入,否则不确定是否会加,因为我没那么多空一个个写解析
 ```
 
-三、捐赠 Donate
+BambooPlayer
+============
 
-```
 BitCoin wallet:
 1yE2qmvj89QG1gVL9zghPYsyUTWu3S222
-```
+
+
 # License
 
     Copyright 2014 Shiori Takei
